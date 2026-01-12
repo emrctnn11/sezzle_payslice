@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  # Product DB (MYSQL)
+  mysql_product_db:
+    image: mysql:8.0
+    container_name: sezzle_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: product_db
+      MYSQL_USER: sezzle_user
+      MYSQL_PASSWORD: sezzle_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # Order/Payment Ledger(Postgres)
+  # uses for ACID transactional integrity
+
+  postgres_ledger_db:
+    image: postgres:15-alpine
+    container_name: sezzle_postgres
+    environment:
+      POSTGRES_USER: sezzle_admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: ledger_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  mysql_data:
+  postgres_data:

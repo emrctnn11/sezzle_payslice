@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payslice-service
+spec:
+  selector:
+    app: payslice-backend
+  ports:
+    - protocol: TCP
+      port: 80        #External Ports (AWS Load Balancer)
+      targetPort: 8080   #Container Port (Go APP)
+  type: LoadBalancer     # Asks AWS for a Public IP.
