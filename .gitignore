@@ -1,0 +1,32 @@
+# --- System ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- Backend (Go) ---
+# Binaries
+main
+main.exe
+backend/main
+backend/main.exe
+
+# Dependency directories
+backend/vendor/
+
+# Secrets (NEVER commit these)
+*.env
+*.env.local
+
+# --- Frontend (React/Node) ---
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.eslintcache
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# --- Infrastructure ---
+# Ignore local database data if mapped here
+mysql_data/
+postgres_data/
